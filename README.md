@@ -26,7 +26,9 @@ Anaconda+jupyter是最为推荐的选择（各种数据处理与画图的库都�
 1.这真是一个简单的实验，会有较多剩余时间  
 2.老师建议上课就把数据处理了，听他的吧  
 ## 友情链接
-1.awesome-hust: https://github.com/recolic/awesome-hust  
+1.物理实验预约以及讲义下载网址：http://210.42.109.72/HustElective/
+（说起来很蠢，但我还是忍不住提醒你：使用校园网）
+2.awesome-hust: https://github.com/recolic/awesome-hust  
 （集中了一些适用于华科的资料，小工具等）  
-2.recolic的物理实验数据处理套装：https://github.com/recolic/phy-exp  
+3.recolic的物理实验数据处理套装：https://github.com/recolic/phy-exp  
 （很全，有专门的网页，可以傻瓜式的处理实验数据，但不能画图）  
