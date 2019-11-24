@@ -1,0 +1,76 @@
+\documentclass{article}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{luatexja-fontspec}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\setmainjfont{Adobe Kaiti Std}
+\begin{document}
+
+\begin{table}[]
+\centering
+\caption{测量普朗克常数$h$及红限频率数据表}
+\label{tab:table1}
+\begin{tabular}{@{}c|ccccc@{}}
+\toprule
+波长\lambda /nm & 365    & 405    & 436    & 546    & 577    \\ \toprule
+\multirow{4}{*}{$U_s$/V}       & -1.458 & -1.300 & -1.003 & -0.434 & -0.313 \\
+                             & -1.472 & -1.321 & -1.035 & -0.456 & -0.336 \\
+                             & -1.495 & -1.326 & -10.43 & -0.468 & -0.346 \\
+                             & -1.502 & -1.335 & -1.052 & -0.477 & -0.365 \\ \midrule
+平均值/V                         & -1.482 & -1.321 & -1.033 & -0.459 & -0.338 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{multirow}
+\begin{table}[]
+\centering
+\caption{}
+\label{tab:table2}
+\begin{tabular}{@{}c|cc|cc|cc@{}}
+\toprule
+光阑/mm                & \multicolumn{2}{c|}{2} & \multicolumn{2}{c|}{4} & \multicolumn{2}{c}{8} \\ \midrule
+测量量                  & U/V   & $I/10^{-13}A$ & U/V   & $I/10^{-12}A$  & U/V   & $I/10^{-12}A$  \\ \midrule
+\multirow{13}{*}{数据} & -0.4  & 0.00          & -0.3  & 0.00           & -0.3  & 0.00           \\
+                     & 1.1   & 577           & 1.2   & 180.2          & 1.2   & 383            \\
+                     & 2.6   & 908           & 2.7   & 336            & 2.7   & 779            \\
+                     & 4.1   & 1114          & 4.2   & 408            & 4.2   & 1129           \\
+                     & 5.6   & 1293          & 5.7   & 479            & 5.7   & 1406           \\
+                     & 7.1   & 1460          & 7.2   & 543            & 7.2   & 1623           \\
+                     & 8.6   & 1620          & 8.7   & 602            & 8.7   & 1795           \\
+                     & 10.1  & 1768          & 10.2  & 657            & 10.2  & 1948           \\
+                     & 11.6  & 1889          & 11.7  & 707            & 11.7  & 2090           \\
+                     & 13.1  & 1997          & 13.2  & 758            & 13.2  & 2270           \\
+                     & 14.6  & 2150          & 14.7  & 799            & 14.7  & 2390           \\
+                     & 16.1  & 2230          & 16.2  & 835            & 16.2  & 2520           \\
+                     & 17.6  & 2310          & 17.7  & 863            & 17.7  & 2640           \\
+                     & 19.1  & 2370          & 19.2  & 906            & 19.2  & 2720           \\
+                     & 20.6  & 2470          & 20.7  & 932            & 20.7  & 2810           \\
+                     & 22.1  & 2530          & 22.2  & 958            & 22.2  & 2870           \\
+                     & 23.6  & 2580          & 23.7  & 981            & 23.7  & 2940           \\
+                     & 25.1  & 2660          & 25.2  & 998            & 25.2  & 3030           \\
+                     & 26.6  & 2700          & 26.7  & 1021           & 26.7  & 3080           \\
+                     & 28.1  & 2750          & 28.2  & 1050           & 28.2  & 3170           \\
+                     & 29.6  & 2800          & 29.7  & 1062           & 29.7  & 3230           \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\begin{tikzpicture}
+    \begin{axis}[
+        legend style={at={(0.5,-0.2)},
+		anchor=north,legend columns=-1},
+        xlabel=$U_s$/V,
+        ylabel=$I$/A]
+ \addplot [mark = *, blue smooth, very thick] table {1.csv};
+    \addlegendentry{光阑2mm}
+ \addplot [mark = *, red] table {2.csv};
+    \addlegendentry{光阑4mm}
+ \addplot [mark = * , green] table {3.csv};
+    \addlegendentry{光阑8mm}
+    \end{axis}
+\draw[style=help lines] (0,0) grid (6.9,5.7)
+\end{tikzpicture}
+\end{document}
