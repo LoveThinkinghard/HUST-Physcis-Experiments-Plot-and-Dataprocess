@@ -1,10 +1,16 @@
 \documentclass{article}
 \usepackage{booktabs}
 \usepackage{multirow}
-\usepackage{luatexja-fontspec}
-
 \usepackage{tikz}
 \usepackage{pgfplots}
+
+% I'm using MaxTeX on Catalina, the CTeX-kit not work well now(2019.11.24).
+% So I'm using luatexja and fontspec to specify the CJK font.
+% You may not have Adobe Std, change it to your font
+% Or delete following two lines and use ctexart on Linux/Windows.
+% I will change it when the CTeX-kit is fixed.
+% see: https://github.com/CTeX-org/ctex-kit/pull/462
+\usepackage{luatexja-fontspec}
 \setmainjfont{Adobe Kaiti Std}
 \begin{document}
 
@@ -23,12 +29,9 @@
 \end{tabular}
 \end{table}
 
-% Please add the following required packages to your document preamble:
-% \usepackage{booktabs}
-% \usepackage{multirow}
 \begin{table}[]
 \centering
-\caption{}
+\caption{测量光电管伏安特性数据表}
 \label{tab:table2}
 \begin{tabular}{@{}c|cc|cc|cc@{}}
 \toprule
@@ -58,19 +61,47 @@
 \end{tabular}
 \end{table}
 
+\begin{table}[H]
+\centering
+\caption{验证光饱和电流与入射光强正比关系数据表}
+\label{tab:table3}
+\begin{tabular}{@{}c|c|ccc@{}}
+\toprule
+波长/nm                & \multicolumn{4}{c}{数据}           \\ \midrule
+\multirow{2}{*}{546} & 光阑/mm       & 2     & 4    & 8    \\
+                     & $I/10^{-12}A$ & 174.3 & 669  & 2660 \\ \midrule
+\multirow{2}{*}{436} & 光阑/mm       & 2     & 4    & 8    \\
+                     & $I/10^{-12}A$ & 514   & 1879 & 6860 \\ \bottomrule
+\end{tabular}
+\end{table}
+
 \begin{tikzpicture}
     \begin{axis}[
         legend style={at={(0.5,-0.2)},
 		anchor=north,legend columns=-1},
         xlabel=$U_s$/V,
-        ylabel=$I$/A]
- \addplot [mark = *, blue smooth, very thick] table {1.csv};
+        ylabel=$I/10^{-12}$/A]
+ \addplot [mark = *, blue, smooth, very thick] table {1.csv};
     \addlegendentry{光阑2mm}
- \addplot [mark = *, red] table {2.csv};
+ \addplot [mark = *, red, smooth, very thick] table {2.csv};
     \addlegendentry{光阑4mm}
- \addplot [mark = * , green] table {3.csv};
+ \addplot [mark = * , green, smooth, very thick] table {3.csv};
     \addlegendentry{光阑8mm}
     \end{axis}
 \draw[style=help lines] (0,0) grid (6.9,5.7)
+\end{tikzpicture}
+\\
+\begin{tikzpicture}
+    \begin{axis}[
+        legend style={at={(0.3,0.8)},
+		anchor=south,legend columns=-1},
+        xlabel=\Phi/$mm^2$,
+        ylabel=$I/10^{-11}$A]
+        \addplot [mark = *, blue, smooth, very thick] table {4.csv};
+    \addlegendentry{546nm}
+        \addplot [mark = *, red, smooth, very thick] table {5.csv};
+    \addlegendentry{436nm}
+    \end{axis} 
+
 \end{tikzpicture}
 \end{document}
